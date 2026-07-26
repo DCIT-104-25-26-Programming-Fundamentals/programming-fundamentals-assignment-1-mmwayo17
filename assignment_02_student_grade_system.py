@@ -45,7 +45,10 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
-def check_score(grade):
+def get_grade(grade):
+    if grade > 100 or grade < 0:
+        return None
+
     if grade >= 80:
         return "A"
     elif grade >= 70:
@@ -57,5 +60,14 @@ def check_score(grade):
     else:
         return "Grade F"
 
-score = int(input("Input Score: "))
-print(check_score(score))
+def main():
+    score = int(input("Input Score: "))
+    grade = get_grade(score)
+
+    if grade:
+        print(grade)
+    else:
+        print("Your Score is Invalid. Must be between 0 - 100")
+
+if __name__ == "__main__":
+    main()
