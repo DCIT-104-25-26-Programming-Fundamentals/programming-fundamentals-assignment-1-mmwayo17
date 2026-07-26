@@ -35,3 +35,22 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def check_prime(number):
+    if number <= 1:
+        return False
+
+    for n in range(2, 10):
+        if number != n:
+            if number % n == 0:
+                return False
+
+    return True
+
+def main():
+    number = int(input("Input your number: "))
+    answer = check_prime(number)
+
+    print(answer)
+
+if __name__ == "__main__":
+    main()
