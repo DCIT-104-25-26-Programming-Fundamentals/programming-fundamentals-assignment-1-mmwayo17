@@ -45,3 +45,17 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def check_score(grade):
+    if grade >= 80:
+        return "A"
+    elif grade >= 70:
+        return "Grade B"
+    elif grade >= 60:
+        return "Grade C"
+    elif grade >= 50:
+        return "Grade D"
+    else:
+        return "Grade F"
+
+score = int(input("Input Score: "))
+print(check_score(score))
