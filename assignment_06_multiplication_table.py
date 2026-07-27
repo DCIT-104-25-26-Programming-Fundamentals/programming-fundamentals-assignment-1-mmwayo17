@@ -55,3 +55,38 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def generate_single_table(n):
+    if n < 0:
+        return None
+    
+    for i in range(12):
+        print(f"{n} x {i + 1} = {n * (i +1)}")
+
+def generate_multiple_tables(n):
+    if n < 0:
+        return None
+    
+    for i in range(n):
+        for j in range(12):
+            print(f"{i+1} x {j + 1} = {(i + 1) * (j +1)}")
+
+        print("-------------------------------")
+
+def main():
+    number = int(input("Enter Number: "))
+    if number > 0:
+        generate_single_table(number)
+    else:
+        print("Invalid Input")
+        return
+
+    number2 = int(input("Enter Number For Multiple Tables: "))
+    if number2 > 0:
+        generate_multiple_tables(number2)
+    else:
+        print("Invalid Input")
+        return
+
+
+if __name__ == "__main__":
+    main()
