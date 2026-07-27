@@ -74,21 +74,22 @@ def create_matrix(row_number, column_number):
 
     return matrix
 
-def print_matrix(matrix, row_number):
-    for row in range(row_number):
-        print(matrix[row])
-    
-    print("-------------")
+def print_matrix(matrix):
+    if matrix:
+        for row in range(len(matrix)):
+            print(matrix[row])
+        
+        print("-------------")
 
 
 def transpose(matrix):
     transpose_matrix = []
-    for _ in range(len(matrix)):
+    for _ in range(len(matrix[0])):
         transpose_matrix.append([])
 
-    for i in range(len(matrix)):
-        for j in range(len(matrix[0])):
-            transpose_matrix[j].append(matrix[i][j])
+    for i in range(len(matrix[0])):
+        for j in range(len(matrix)):
+            transpose_matrix[i].append(matrix[j][i])
 
     return transpose_matrix
 
@@ -118,19 +119,29 @@ def multiply_matrix(matrix1, matrix2):
 
     for i in range(len(matrix1)):
         for j in range(len(matrix2[0])):
-            pass
+            sum = 0
+            for k in range(len(matrix1[0])):
+                sum += matrix1[i][k] * matrix2[k][j]
+
+            multiplied_matrix[i].append(sum)
+            sum = 0
+
+    return multiplied_matrix
 
 def main():
     row_number = int(input("Enter number of rows: "))
     column_number = int(input("Enter number of columns: "))
 
+    #These are my test cases for the functions. Try for yourself.
     matrix = create_matrix(row_number, column_number)
     transpose_matrix = transpose(matrix)
     added_matrix = add_matrix(matrix, transpose_matrix)
+    multiplied_matrix = multiply_matrix(matrix, transpose_matrix)
 
-    print_matrix(matrix, row_number)
-    print_matrix(transpose_matrix, row_number)
-    print_matrix(added_matrix, row_number)
+    print_matrix(matrix)
+    print_matrix(transpose_matrix)
+    print_matrix(added_matrix)
+    print_matrix(multiplied_matrix)
 
 if __name__ == "__main__":
     main()
