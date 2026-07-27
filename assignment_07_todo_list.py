@@ -78,4 +78,52 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+import time
+# I imported the time module in order to make it easier to see messages 
+# from the program when certain functions finished running
 
+def add(todo):
+    task = input("Enter Task: ")
+    todo.append(task)
+    print(f"Task added: {task}")
+
+def remove(todo):
+    delete = int(input("Enter task number to delete: "))
+    deleted_item =todo.pop(delete - 1)
+    print(f"Task '{deleted_item}' has been removed.")
+
+def view(todo):
+    for item in todo:
+        print(item)
+
+def main():
+    todo = []
+    while True:
+        print("""
+        ============================
+            TO-DO LIST MENU
+        ============================
+        1. Add task
+        2. View tasks
+        3. Delete task
+        4. Quit
+        """)
+    
+        choice = int(input("Enter your choice (1-4): "))
+        if choice == 1:
+            add(todo)
+            time.sleep(3)
+        elif choice == 2:
+            view(todo)
+            time.sleep(3)
+        elif choice == 3:
+            remove(todo)
+            time.sleep(3)
+        elif choice == 4:
+            break
+        else:
+            print("Invalid Input")
+
+
+if __name__ == "__main__":
+    main()
