@@ -60,3 +60,77 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def create_matrix(row_number, column_number):
+    column = []
+    matrix = []
+
+    for i in range(row_number):
+        row = input(f"Enter row {i + 1}: ").split()
+        for j in range(column_number):
+            column.append(int(row[j]))
+
+        matrix.append(column)
+        column = []
+
+    return matrix
+
+def print_matrix(matrix, row_number):
+    for row in range(row_number):
+        print(matrix[row])
+    
+    print("-------------")
+
+
+def transpose(matrix):
+    transpose_matrix = []
+    for _ in range(len(matrix)):
+        transpose_matrix.append([])
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            transpose_matrix[j].append(matrix[i][j])
+
+    return transpose_matrix
+
+def add_matrix(matrix1, matrix2):
+    added_matrix = []
+
+    if len(matrix1) != len(matrix2) or len(matrix1[0]) != len(matrix2):
+        return print("Matrix Size do not match. Must be of equal size(MxN)")
+
+    for _ in range(len(matrix1)):
+        added_matrix.append([])
+
+    for i in range(len(matrix1)):
+        for j in range(len(matrix2)):
+            added_matrix[i].append(matrix1[i][j] + matrix2[i][j])
+
+    return added_matrix
+
+def multiply_matrix(matrix1, matrix2):
+    multiplied_matrix = []
+
+    if len(matrix1[0]) != len(matrix2):
+        return print("Both matrices cannot multipy.Size of Row 1 of matrix 1 must match size of column 1 of matrix 2")
+
+    for _ in range(len(matrix1)):
+        multiplied_matrix.append([])
+
+    for i in range(len(matrix1)):
+        for j in range(len(matrix2[0])):
+            pass
+
+def main():
+    row_number = int(input("Enter number of rows: "))
+    column_number = int(input("Enter number of columns: "))
+
+    matrix = create_matrix(row_number, column_number)
+    transpose_matrix = transpose(matrix)
+    added_matrix = add_matrix(matrix, transpose_matrix)
+
+    print_matrix(matrix, row_number)
+    print_matrix(transpose_matrix, row_number)
+    print_matrix(added_matrix, row_number)
+
+if __name__ == "__main__":
+    main()

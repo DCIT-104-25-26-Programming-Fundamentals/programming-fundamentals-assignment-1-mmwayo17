@@ -79,12 +79,17 @@ def average(nums):
 
 def main():
     amount_of_numbers = int(input("How many numbers? "))
+    if amount_of_numbers < 1:
+        print("Invalid Input")
+        return
     nums = add_numbers(amount_of_numbers)
+
     print("Results")
     print(f"sum: {sum(nums)}")
     print(f"Average: {average(nums)}")
     print(f"Max: {max(nums)}")
     print(f"Min: {min(nums)}")
+
 
 if __name__ == "__main__":
     main()
