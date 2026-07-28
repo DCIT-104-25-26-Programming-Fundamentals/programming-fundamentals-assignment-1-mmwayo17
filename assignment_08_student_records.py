@@ -89,4 +89,93 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def add():
+    student_record = {}
+    try:
+        name = input("Student Name: ")
+        id = int(input("Student Id: "))
+        scores = []
+        number = int(input("How many scores? "))
 
+        for i in range(number):
+            score = float(input(f"Enter Score {i + 1}: "))
+            scores.append(score)
+
+        student_record["name"] = name
+        student_record["id"] = id
+        student_record["Scores"] = scores
+    except ValueError:
+        print("Invalid Input")
+        return None
+
+    return student_record
+
+def average(scores):
+    sum = 0
+    for score in scores:
+        sum += score
+
+    return sum/len(scores)
+
+
+def display(records):
+    views = []
+    for record in records:
+        views.append(f"""
+    --------------------------------------------------
+    {record["name"]}         {record["id"]}          {record["Scores"]}         {round(average(record["Scores"]))}
+    --------------------------------------------------
+        """)
+
+    return views    
+    
+
+def main():
+    student_records = []
+    while True:
+        print(
+            """
+            ================================
+               STUDENT RECORD SYSTEM MENU
+            ================================
+            1. Add student
+            2. Display all students
+            3. Calculate average score
+            4. Quit
+            """
+        )
+        try:
+            choice = int(input("Enter your choice (1-4): "))
+        except ValueError:
+            print("Invalid Input must be a number")
+            continue
+
+        if choice == 1:
+            record = add()
+            if record:
+                student_records.append(record)
+            else:
+                continue
+
+        elif choice == 2:
+            display_students = display(student_records)
+            print("""--------------------------------------------------
+    Name           ID          Scores         Average""" )
+
+            for student in display_students:
+                print(f"{student}")
+
+        elif choice ==3:
+            id = int(input("Enter Student Id: "))
+            for student in student_records:
+                if student["id"] == id:
+                    print(round(average(student["Scores"]), 2))
+
+        elif choice == 4:
+            return False
+        
+        else:
+            print("Invalid Input")
+
+if __name__ == "__main__":
+    main()
